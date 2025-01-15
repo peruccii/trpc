@@ -1,0 +1,17 @@
+{
+  "name": "nestjs-nextjs-trpc",
+  "version": "1.0.0",
+  "description": "a monorepo project using trpc",
+  "license": "ISC",
+  "author": "peruccii",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npm run --parallel dev"
+  },
+  "dependencies": {
+    "@trpc/server": "^10.45.2",
+    "zod": "^3.24.1"
+  }
+}
