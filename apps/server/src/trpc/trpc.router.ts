@@ -2,7 +2,10 @@ import { INestApplication, Injectable } from '@nestjs/common';
 import { TrpcService } from './trpc.service';
 import * as trpcExpress from '@trpc/server/adapters/express';
 import { getNameService } from '@server/application/usecases/getname.service';
-import { schema } from '@server/application/zod/schemas/get-name.schema.ts';
+import {
+  GetNameAndAgeSchema,
+  schema,
+} from '@server/application/zod/schemas/get-name.schema.ts';
 
 @Injectable()
 export class TrpcRouter {
@@ -13,10 +16,11 @@ export class TrpcRouter {
 
   appRouter = this.trpc.router({
     getName: this.trpc.procedure.input(schema).query(({ input }) => {
-      const a = {
+      const a: GetNameAndAgeSchema = {
         name: input.name,
         age: input.age,
       };
+
       return this.nameService.getName(a);
     }),
   });
