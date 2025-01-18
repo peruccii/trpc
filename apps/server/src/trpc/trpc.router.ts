@@ -1,27 +1,26 @@
 import { INestApplication, Injectable } from '@nestjs/common';
 import { TrpcService } from './trpc.service';
 import * as trpcExpress from '@trpc/server/adapters/express';
-import { getNameService } from '@server/application/usecases/getname.service';
+import { GetDataService } from '@server/application/usecases/getdata.service';
 import {
-  GetNameAndAgeSchema,
   schema,
-} from '@server/application/zod/schemas/get-name.schema.ts';
+  TypeAge,
+} from '@server/application/zod/schemas/get-name.schema';
 
 @Injectable()
 export class TrpcRouter {
   constructor(
     private readonly trpc: TrpcService,
-    private readonly nameService: getNameService,
+    private readonly dataService: GetDataService,
   ) {}
 
   appRouter = this.trpc.router({
-    getName: this.trpc.procedure.input(schema).query(({ input }) => {
-      const a: GetNameAndAgeSchema = {
-        name: input.name,
+    getData: this.trpc.procedure.input(schema).query(({ input }) => {
+      const raw_input: TypeAge = {
         age: input.age,
       };
 
-      return this.nameService.getName(a);
+      return this.dataService.getData(raw_input);
     }),
   });
 
