@@ -7,11 +7,22 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npm run --parallel dev"
+    "dev:server": "npm run dev --workspace=server",
+    "dev:web": "npm run dev --workspace=web",
+    "dev": "npm run dev:server & npm run dev:web",
+    "build:server": "npm run build --workspace=server",
+    "build:web": "npm run build --workspace=web",
+    "start:server": "npm run start:prod --workspace=server",
+    "start:web": "npm run start --workspace=web"
   },
+  "workspaces": [
+    "apps/*"
+  ],
   "dependencies": {
-    "@trpc/server": "^10.45.2",
-    "zod": "^3.24.1"
+    "@nestjs/common": "^11.0.1",
+    "@nestjs/core": "^11.0.1"
+  },
+  "devDependencies": {
+    "webpack": "^5.97.1"
   }
 }
