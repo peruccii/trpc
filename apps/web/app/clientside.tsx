@@ -6,7 +6,6 @@ import { TRPCError } from "@trpc/server";
 export default function Months() {
   const [currentWeek, setCurrentWeek] = useState(0);
   const [age, setAge] = useState(0);
-  const [error, setError] = useState("");
 
   const handleTakeAge = (e: number) => {
     setAge(e);
@@ -25,11 +24,7 @@ export default function Months() {
       })
       .catch((error) => {
         if (error instanceof TRPCError) {
-          const httpStatusCode = getHTTPStatusCodeFromError(cause);
-
-          res
-            .status(httpStatusCode)
-            .json({ error: { message: cause.message } });
+          console.log(error.message);
         }
       });
   }, [age]);
