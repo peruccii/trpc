@@ -36,7 +36,6 @@ export default function Months() {
         placeholder="Coloque sua idade aqui"
         maxLength={3}
       />
-      <span className="bg-blue-500">{error}</span>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {Array.from({ length: Math.ceil(weeks.length / 27) }, (_, rowIndex) => (
           <div key={`row-${rowIndex}`} className="flex flex-wrap">
@@ -49,7 +48,7 @@ export default function Months() {
                   <div
                     key={colIndex}
                     className={`w-5 h-5 m-[1px] rounded-sm flex items-center justify-center text-[8px]
-                       ${weekNumber <= currentWeek ? "bg-red-500" : "bg-blue-500"}
+                      border-2 border-white ${weekNumber <= currentWeek ? "bg-white" : "bg-black"}
                        hover:bg-primary-foreground hover:scale-150 transition-all duration-200 ease-in-out`}
                     title={`Week ${weekNumber}`}
                   ></div>
