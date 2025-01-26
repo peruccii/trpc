@@ -1,5 +1,12 @@
-import Months from "./clientside";
+
+import Hero from "./hero";
 
 export default async function Home() {
-  return <Months />;
+  return (
+<>
+
+
+<Hero/>
+</>
+  )
 }
