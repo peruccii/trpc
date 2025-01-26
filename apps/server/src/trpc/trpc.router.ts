@@ -5,7 +5,7 @@ import { GetDataService } from '@server/application/usecases/getdata.service';
 import {
   schema,
   TypeAge,
-} from '@server/application/zod/schemas/get-name.schema';
+} from '@server/application/zod/schemas/get-data.schema';
 
 @Injectable()
 export class TrpcRouter {
